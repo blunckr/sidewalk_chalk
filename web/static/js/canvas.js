@@ -7,12 +7,13 @@ export default class Canvas extends React.Component{
     var color = '#000000';
 
     var grid = [];
-    _.times(5, ()=> grid.push([]));
+    _.times(25, ()=> grid.push([]));
     _.each(grid, row => {
-      _.times(5, ()=> row.push({color: '#FFFFFF'}));
+      _.times(25, ()=> row.push('#FFFFFF'));
     });
 
     this.state = {color, grid, mouseDown: false};
+
   }
 
   changeColor(color){
@@ -30,7 +31,7 @@ export default class Canvas extends React.Component{
   }
 
   blockChange(x, y){
-    this.state.grid[x][y].color = this.state.color;
+    this.state.grid[x][y] = this.state.color;
     this.setState({grid: this.state.grid});
   }
 
@@ -54,9 +55,9 @@ export default class Canvas extends React.Component{
             _.map(row, (block, y) =>
               <rect
                 key={`x${x}y${y}`}
-                x={x * 100} y={y * 100}
-                width="100" height="100"
-                style={{fill: block.color}}
+                x={x * 20} y={y * 20}
+                width="20" height="20"
+                style={{fill: block}}
                 onMouseDown= {()=> this.blockClick(x, y)}
                 onMouseEnter={()=> this.blockEnter(x, y)}/>
             )
