@@ -1,0 +1,6 @@
+<h2>Edit sidewalk</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: sidewalk_path(@conn, :update, @sidewalk) %>
+
+<%= link "Back", to: sidewalk_path(@conn, :index) %>

@@ -1,0 +1,26 @@
+<h2>Listing sidewalks</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for sidewalk <- @sidewalks do %>
+    <tr>
+      <td><%= sidewalk.name %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: sidewalk_path(@conn, :show, sidewalk), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: sidewalk_path(@conn, :edit, sidewalk), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: sidewalk_path(@conn, :delete, sidewalk), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New sidewalk", to: sidewalk_path(@conn, :new) %>

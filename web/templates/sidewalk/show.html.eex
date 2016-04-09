@@ -1,0 +1,13 @@
+<h2>Show sidewalk</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @sidewalk.name %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: sidewalk_path(@conn, :edit, @sidewalk) %>
+<%= link "Back", to: sidewalk_path(@conn, :index) %>
