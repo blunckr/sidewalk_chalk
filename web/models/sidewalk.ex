@@ -1,6 +1,7 @@
 defmodule SidewalkChalk.Sidewalk do
   use SidewalkChalk.Web, :model
 
+  @derive {Poison.Encoder, only: [:name, :colors]}
   schema "sidewalks" do
     field :name, :string
     field :colors, {:array, :string}
@@ -23,7 +24,11 @@ defmodule SidewalkChalk.Sidewalk do
   end
 
   defp build_colors(changeset) do
-    colors = Enum.map(0..(50 * 50 - 1), fn _ -> "#000000" end)
-    %{changeset | colors: colors}
+    if is_nil changeset.id do
+      colors = Enum.map(0..(50 * 50 - 1), fn _ -> "#000000" end)
+      %{changeset | colors: colors}
+    else
+      changeset
+    end
   end
 end

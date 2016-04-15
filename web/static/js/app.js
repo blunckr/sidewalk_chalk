@@ -30,7 +30,17 @@ import Root from './root';
 var mount = document.getElementById('app');
 
 if(mount){
-  var store = createStore(reducer);
+  const data = JSON.parse(mount.dataset.sidewalk);
+  const store = createStore(reducer, {image:
+    {
+      // the rest of these should be provided by the model
+      width: 500,
+      height: 500,
+      rows: 50,
+      cols: 50,
+      colors: data.colors
+    }
+  });
 
   ReactDOM.render(
     <Provider store={store}>

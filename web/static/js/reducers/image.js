@@ -1,13 +1,8 @@
-const initialState = () => {
-  return {
-    width: 500,
-    height: 500,
-    rows: 50,
-    cols: 50,
-  };
-};
+import _ from 'lodash';
 
-export default (state=initialState(), action) => {
+export default (state={}, action) => {
+  switch(action.type){
+  }
 
   return state;
 };

@@ -1,13 +1,6 @@
-<h2>Show sidewalk</h2>
+<h2><%= @sidewalk.name %></h2>
 
-<ul>
-
-  <li>
-    <strong>Name:</strong>
-    <%= @sidewalk.name %>
-  </li>
-
-</ul>
+<div id="app" data-sidewalk=<%= Poison.encode!(@sidewalk) %>></div>
 
 <%= link "Edit", to: sidewalk_path(@conn, :edit, @sidewalk) %>
 <%= link "Back", to: sidewalk_path(@conn, :index) %>
