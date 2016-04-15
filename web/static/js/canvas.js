@@ -17,7 +17,7 @@ export default class Canvas extends React.Component{
   }
 
   changeColor(color){
-    this.setState({color})
+    this.setState({color});
   }
 
   blockClick(x, y){

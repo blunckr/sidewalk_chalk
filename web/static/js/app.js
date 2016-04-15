@@ -11,7 +11,7 @@
 //
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
-import "phoenix_html"
+import 'phoenix_html';
 
 // Import local files
 //
@@ -21,9 +21,13 @@ import "phoenix_html"
 // import socket from "./socket"
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Canvas from "./canvas"
+import Canvas from './canvas';
 
-ReactDOM.render(
-  <Canvas/>,
-  document.getElementById("app")
-)
+var root = document.getElementById('app');
+
+if(root){
+  ReactDOM.render(
+    <Canvas/>,
+    root
+  );
+}
