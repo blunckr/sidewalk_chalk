@@ -18,6 +18,12 @@ defmodule SidewalkChalk.Sidewalk do
   """
   def changeset(model, params \\ :empty) do
     model
+    |> build_colors
     |> cast(params, @required_fields, @optional_fields)
+  end
+
+  defp build_colors(changeset) do
+    colors = Enum.map(0..(50 * 50 - 1), fn _ -> "#000000" end)
+    %{changeset | colors: colors}
   end
 end
