@@ -21,13 +21,21 @@ import 'phoenix_html';
 // import socket from "./socket"
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Canvas from './canvas';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
-var root = document.getElementById('app');
+import reducer from './reducers/root';
+import Root from './root';
 
-if(root){
+var mount = document.getElementById('app');
+
+if(mount){
+  var store = createStore(reducer);
+
   ReactDOM.render(
-    <Canvas/>,
-    root
+    <Provider store={store}>
+      <Root/>
+    </Provider>,
+    mount
   );
 }

@@ -1,9 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import _ from 'lodash';
 
-export default class Canvas extends React.Component{
-  constructor(){
-    super();
+class Root extends React.Component{
+  constructor(props){
+    super(props);
+
     var color = '#000000';
 
     var grid = [];
@@ -69,3 +71,9 @@ export default class Canvas extends React.Component{
     );
   }
 };
+
+var stateToProps = (state) => {
+  return state;
+};
+
+export default connect(stateToProps)(Root);
