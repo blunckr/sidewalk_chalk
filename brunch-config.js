@@ -73,7 +73,8 @@ exports.config = {
       "react-dom",
       "redux",
       "react-redux",
-      "lodash"
+      "lodash",
+      "immutable"
     ]
   }
 };

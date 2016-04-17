@@ -23,6 +23,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import Immutable from 'immutable';
 
 import reducer from './reducers/root';
 import Root from './components/root';
@@ -32,14 +33,14 @@ var mount = document.getElementById('app');
 if(mount){
   const data = JSON.parse(mount.dataset.sidewalk);
   const store = createStore(reducer, {image:
-    {
+    Immutable.fromJS({
       // the rest of these should be provided by the model
       width: 500,
-      height: 500,
+      height: 200,
       rows: 50,
       cols: 50,
-      colors: data.colors
-    }
+      grid: _.chunk(data.colors, 50)
+    })
   });
 
   ReactDOM.render(

@@ -12,9 +12,7 @@ class Root extends React.Component{
 
     var color = '#000000';
 
-    const grid = _.chunk(props.image.colors, props.image.cols);
-
-    this.state = {color, grid, mouseDown: false};
+    this.state = {color, mouseDown: false};
 
     this.startColor = this.startColor.bind(this);
     this.stopColor  = this.stopColor.bind(this);
@@ -37,9 +35,7 @@ class Root extends React.Component{
   }
 
   blockChange(y, x){
-    this.state.grid[y][x] = this.state.color;
-    this.setState({grid: this.state.grid});
-    var x= this.props.updateBlockColor(y, x, this.state.color);
+    var x = this.props.updateBlockColor(y, x, this.state.color);
   }
 
 
@@ -55,13 +51,13 @@ class Root extends React.Component{
     return(
       <div>
         <Grid
-          grid       ={this.state.grid}
+          grid       ={this.props.image.get('grid')}
+          width      ={this.props.image.get('width')}
+          height     ={this.props.image.get('height')}
           startColor ={this.startColor}
           stopColor  ={this.stopColor}
           blockClick ={this.blockClick}
           blockEnter ={this.blockEnter}
-          width      ={this.props.image.width}
-          height     ={this.props.image.height}
           />
         <br />
         <input type="color" value={this.state.color} onChange={(e)=> this.changeColor(e.target.value)}/>
