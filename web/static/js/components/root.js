@@ -1,8 +1,10 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
 import Grid from './grid';
+import * as ImageActions from '../actions/image';
 
 class Root extends React.Component{
   constructor(props){
@@ -37,6 +39,7 @@ class Root extends React.Component{
   blockChange(y, x){
     this.state.grid[y][x] = this.state.color;
     this.setState({grid: this.state.grid});
+    var x= this.props.updateBlockColor(y, x, this.state.color);
   }
 
 
@@ -67,8 +70,12 @@ class Root extends React.Component{
   }
 };
 
-var stateToProps = (state) => {
+const stateToProps = (state)=>{
   return {image: state.image};
 };
 
-export default connect(stateToProps)(Root);
+const dispatchToProps = (dispatch)=>{
+  return bindActionCreators(ImageActions, dispatch);
+};
+
+export default connect(stateToProps, dispatchToProps)(Root);
