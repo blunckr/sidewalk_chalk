@@ -25,7 +25,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
 import reducer from './reducers/root';
-import Root from './root';
+import Root from './components/root';
 
 var mount = document.getElementById('app');
 
