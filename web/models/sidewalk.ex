@@ -25,7 +25,7 @@ defmodule SidewalkChalk.Sidewalk do
 
   defp build_colors(changeset) do
     if is_nil changeset.id do
-      colors = Enum.map(0..(50 * 50 - 1), fn _ -> "#000000" end)
+      colors = Enum.map(0..(50 * 50 - 1), fn _ -> "#FFFFFF" end)
       %{changeset | colors: colors}
     else
       changeset

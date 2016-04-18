@@ -36,7 +36,7 @@ if(mount){
     Immutable.fromJS({
       // the rest of these should be provided by the model
       width: 500,
-      height: 200,
+      height: 500,
       rows: 50,
       cols: 50,
       grid: _.chunk(data.colors, 50)
