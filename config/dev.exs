@@ -35,8 +35,6 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :sidewalk_chalk, SidewalkChalk.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
   database: "sidewalk_chalk_dev",
   hostname: "localhost",
   pool_size: 10

@@ -70,8 +70,4 @@ const stateToProps = (state)=>{
   return {image: state.image};
 };
 
-const dispatchToProps = (dispatch)=>{
-  return bindActionCreators(ImageActions, dispatch);
-};
-
-export default connect(stateToProps, dispatchToProps)(Root);
+export default connect(stateToProps, ImageActions)(Root);
