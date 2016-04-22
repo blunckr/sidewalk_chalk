@@ -4,12 +4,15 @@ import _ from 'lodash';
 
 import Grid from './grid';
 import * as ImageActions from '../actions/image';
+import Socket from '../socket';
 
 class Root extends React.Component{
   constructor(props){
     super(props);
 
     var color = '#000000';
+
+    this.socket = new Socket(props.image.get('id'), props.updateBlockColor);
 
     this.state = {color, mouseDown: false};
 
@@ -34,7 +37,8 @@ class Root extends React.Component{
   }
 
   blockChange(y, x){
-    var x = this.props.updateBlockColor(y, x, this.state.color);
+    this.socket.updateColor(y, x, this.state.color);
+    this.props.updateBlockColor(y, x, this.state.color);
   }
 
 
