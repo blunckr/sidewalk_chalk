@@ -18,20 +18,22 @@ import 'phoenix_html';
 // Local files can be imported directly using relative
 // paths "./socket" or full ones "web/static/js/socket".
 
-// import socket from "./socket"
+import socket from './socket';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, bindActionCreators } from 'redux';
 import { Provider } from 'react-redux';
 import Immutable from 'immutable';
 
 import reducer from './reducers/root';
 import Root from './components/root';
+import * as ImageActions from './actions/image';
 
 var mount = document.getElementById('app');
 
 if(mount){
   const data = JSON.parse(mount.dataset.sidewalk);
+  socket(data.id, bindActionCreators(ImageActions));
   const store = createStore(reducer, {image:
     Immutable.fromJS({
       // the rest of these should be provided by the model

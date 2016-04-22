@@ -1,7 +1,7 @@
 defmodule SidewalkChalk.Sidewalk do
   use SidewalkChalk.Web, :model
 
-  @derive {Poison.Encoder, only: [:name, :colors]}
+  @derive {Poison.Encoder, only: [:id, :name, :colors]}
   schema "sidewalks" do
     field :name, :string
     field :colors, {:array, :string}

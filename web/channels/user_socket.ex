@@ -3,6 +3,7 @@ defmodule SidewalkChalk.UserSocket do
 
   ## Channels
   # channel "rooms:*", SidewalkChalk.RoomChannel
+  channel "sidewalks:*", SidewalkChalk.SidewalkChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
