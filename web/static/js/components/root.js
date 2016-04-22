@@ -37,7 +37,7 @@ class Root extends React.Component{
   }
 
   blockChange(y, x){
-    this.socket.updateColor(y, x, this.state.color);
+    this.socket.pushColor(y, x, this.state.color, this.props.image.get('cols'));
     this.props.updateBlockColor(y, x, this.state.color);
   }
 
