@@ -13,15 +13,15 @@ use Mix.Config
 # which you typically run after static files are built.
 config :sidewalk_chalk, SidewalkChalk.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "example.com", port: 80],
+  url: [scheme: "https", host: "arcane-harbor-80721.herokuapp.com", port: 443],
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/manifest.json",
   secret_key_base: System.get_env("SECRET_KEY_BASE")
 
 # Configure your database
 config :sidewalk_chalk, SidewalkChalk.Repo,
   adapter: Ecto.Adapters.Postgres,
-  url: [scheme: "https", host: "arcane-harbor-80721.herokuapp.com", port: 443],
-  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  url: System.get_env("DATABASE_URL"),
   pool_size: 20,
   ssl: true
 
