@@ -18,7 +18,7 @@ config :sidewalk_chalk, SidewalkChalk.Endpoint,
   secret_key_base: System.get_env("SECRET_KEY_BASE")
 
 # Configure your database
-config :hello_phoenix, HelloPhoenix.Repo,
+config :hello_phoenix, SidewalkChalk.Repo,
   adapter: Ecto.Adapters.Postgres,
   url: [scheme: "https", host: "arcane-harbor-80721.herokuapp.com", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
