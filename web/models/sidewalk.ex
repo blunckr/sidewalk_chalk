@@ -8,7 +8,7 @@ defmodule SidewalkChalk.Sidewalk do
     timestamps
   end
 
-  @required_fields ~w(name)
+  @required_fields ~w(name colors)
   @optional_fields ~w()
 
   @doc """
