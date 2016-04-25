@@ -4,7 +4,7 @@ import _ from 'lodash';
 
 import Grid from './grid';
 import * as ImageActions from '../actions/image';
-import Socket from '../socket';
+import socket from '../socket';
 
 class Root extends React.Component{
   constructor(props){
@@ -12,14 +12,16 @@ class Root extends React.Component{
 
     var color = '#000000';
 
-    this.socket = new Socket(props.image.get('id'), props.updateBlockColor);
-
     this.state = {color, mouseDown: false};
 
     this.startColor = this.startColor.bind(this);
     this.stopColor  = this.stopColor.bind(this);
     this.blockEnter = this.blockEnter.bind(this);
     this.blockClick = this.blockClick.bind(this);
+    this.pullColor  = this.pullColor.bind(this);
+
+    this.socket = socket(`sidewalks:${props.image.get('id')}`);
+    this.socket.on('update_color', this.pullColor);
   }
 
   changeColor(color){
@@ -37,10 +39,21 @@ class Root extends React.Component{
   }
 
   blockChange(y, x){
-    this.socket.pushColor(y, x, this.state.color, this.props.image.get('cols'));
+    this.pushColor(y, x, this.state.color);
     this.props.updateBlockColor(y, x, this.state.color);
   }
 
+  pullColor({position, color}){
+    const cols = this.props.image.get('cols');
+    const y = Math.floor(position / cols);
+    const x = position % cols;
+    this.props.updateBlockColor(y, x, color);
+  }
+
+  pushColor(y, x, color){
+    const position = (y * this.props.image.get('cols')) + x;
+    this.socket.push('update_color', {position, color});
+  }
 
   startColor(){
     this.setState({mouseDown: true});
